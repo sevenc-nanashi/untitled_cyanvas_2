@@ -1,0 +1,30 @@
+{
+  "name": "-20240815-movie-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "biome check",
+    "lint:fix": "biome check --write --unsafe"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
+    "@types/p5": "^1.7.6",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-arraybuffer": "^0.0.8",
+    "vite-plugin-hmrify": "^0.1.0"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@patrady/chord-js": "^2.2.2",
+    "@sevenc-nanashi/binaryseeker": "npm:@jsr/sevenc-nanashi__binaryseeker@^1.2.1",
+    "@tonejs/midi": "^2.0.28",
+    "fft.js": "^4.0.4",
+    "p5": "^1.11.2",
+    "p5-frame-capturer": "^0.2.0"
+  }
+}
