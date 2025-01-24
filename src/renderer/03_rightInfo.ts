@@ -12,7 +12,7 @@ const drumHeight = 64;
 
 const keys = [
   [0, "Cmaj"],
-  [75, "C♯maj"],
+  [74, "C♯maj"],
 ] as const;
 
 const drumTrackDefs = [
@@ -195,6 +195,21 @@ export const draw = import.meta.hmrify((p: p5, state: State) => {
   p.translate(0, -32 - localPadding);
   p.textAlign(p.RIGHT, p.BOTTOM);
 
+  const currentKey = keys.findLast(([measure]) => measure <= currentMeasure)!;
+  const keyProgress = p.map(
+    state.currentMeasure,
+    currentKey[0],
+    currentKey[0] + 0.25,
+    0,
+    1,
+    true,
+  );
+
+  p.text(currentKey[1], 0, 4 * (1 - keyProgress));
+  p.textSize(64);
+  p.textFont(largeFont);
+  p.textAlign(p.LEFT, p.BOTTOM);
+
   const previousChord = chordAt(currentMeasure - 1);
   const chord = chordAt(currentMeasure);
 
@@ -209,10 +224,5 @@ export const draw = import.meta.hmrify((p: p5, state: State) => {
           1,
           true,
         );
-  const currentKey = keys.findLast(([measure]) => measure <= currentMeasure)?.[1]!;
-  p.text(currentKey, 0, 0);
-  p.textSize(64);
-  p.textFont(largeFont);
-  p.textAlign(p.LEFT, p.BOTTOM);
   p.text(chord?.getName()?.replace("b", "♭") || "-", -width, 4 * (1 - chordProgress));
 });
